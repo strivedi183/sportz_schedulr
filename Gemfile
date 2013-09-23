@@ -50,6 +50,17 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
