@@ -1,4 +1,7 @@
-<h1>Register</h1>
+<h1>Register Now</h1>
+<% if flash[:alert].present? %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
 
 <%= form_for @user do |f| %>
   <%= f.label           :first_name %>

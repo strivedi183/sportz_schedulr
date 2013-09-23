@@ -36,4 +36,14 @@ describe 'sessions' do
     click_button 'Log In'
     page.should have_text 'Home'
   end
+
+  it 'should redirect the admin to the dashboard page after a SUCCESSFUL login attempt' do
+    fill_in :email,     :with => admin.email
+    fill_in :password,  :with => admin.password
+    click_button 'Log In'
+    page.should have_text 'Dashboard'
+  end
+
+
+
 end

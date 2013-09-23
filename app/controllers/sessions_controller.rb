@@ -6,11 +6,14 @@ class SessionsController < ApplicationController
   def create
     user = User.where(:email => params[:email]).first
     if user && user.authenticate(params[:password])
-      redirect_to admin_path if user.is_admin
-      redirect_to root_path
+      if user.is_admin
+        redirect_to admin_path
+      else
+        redirect_to root_path
+      end
     else
       flash.alert = "Incorrect Email and/or Password"
-      render :new
+      redirect_to login_path
     end
   end
 

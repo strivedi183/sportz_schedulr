@@ -17,9 +17,10 @@ describe 'Users' do
 
     it 'creates a new user' do
       within 'form' do
-        register user
+        new_user = User.new(:first_name=>'Tom', :last_name=>'tom', :email=>'tom@email.com', :password=>'tom', :password_confirmation=>'Tom')
+        register new_user
       end
-      expect(page).to have_text 'SPORTZ SCHEDULR -- Home'
+      page.should have_text 'SPORTZ SCHEDULR -- Home'
     end
 
     it 'prevents duplicate entries by email' do
@@ -27,7 +28,7 @@ describe 'Users' do
         register user
         register user
       end
-      expect(page).to have_text 'Error: Did Not Save Registration'
+      expect(page).to have_text 'Error: Could Not Save In Database'
     end
 
   end
