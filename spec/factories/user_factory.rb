@@ -9,6 +9,7 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  is_admin        :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -20,5 +21,17 @@ FactoryGirl.define do
     email                 'test@test.com'
     password              'test'
     password_confirmation 'test'
+    is_admin               false
   end
+
+  factory :admin, :class => User do
+    first_name            'Admin'
+    last_name             'Administrator'
+    email                 'admin@admin.com'
+    password              'admin'
+    password_confirmation 'admin'
+    is_admin               true
+  end
+
+
 end

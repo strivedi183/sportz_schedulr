@@ -9,13 +9,15 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  is_admin        :boolean
 #
 
 require 'spec_helper'
 
 
 describe User do
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user)  {FactoryGirl.create(:user)}
+  let(:admin) {FactoryGirl.create(:admin)}
   describe '.new' do
     it 'creates a new User instance' do
       expect(user).to be_an_instance_of User
@@ -35,6 +37,12 @@ describe User do
     end
     it 'has an email' do
       expect(user.email).to eq 'test@test.com'
+    end
+    it 'is not an administrator' do
+      expect(user.is_admin).to eq false
+    end
+    it 'is an administrator ' do
+      expect(admin.is_admin).to eq true
     end
   end
 
