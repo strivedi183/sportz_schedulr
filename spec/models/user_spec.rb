@@ -9,7 +9,7 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
-#  is_admin        :boolean
+#  is_admin        :boolean          default(FALSE)
 #
 
 require 'spec_helper'

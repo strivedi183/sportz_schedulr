@@ -9,7 +9,7 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
-#  is_admin        :boolean
+#  is_admin        :boolean          default(FALSE)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

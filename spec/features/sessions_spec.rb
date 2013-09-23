@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sessions' do
+describe 'Sessions' do
   let(:user)  {FactoryGirl.create(:user)}
   let(:admin) {FactoryGirl.create(:admin)}
 

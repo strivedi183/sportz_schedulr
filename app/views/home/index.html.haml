@@ -1,2 +1,2 @@
-/ = render 'shared/nav'
 %h1 SPORTZ SCHEDULR -- Home
+= render :partial => 'shared/options' if @auth.present?
