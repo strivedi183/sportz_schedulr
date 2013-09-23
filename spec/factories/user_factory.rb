@@ -33,5 +33,11 @@ FactoryGirl.define do
     is_admin               true
   end
 
-
+  factory :nil_user, :class => User do
+    first_name            ''
+    last_name             ''
+    email                 ''
+    password              ''
+    is_admin              ''
+  end
 end
