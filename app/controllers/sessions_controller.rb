@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
   def create
     user = User.where(:email => params[:email]).first
     if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      @auth = User.find(session[:user_id])
       if user.is_admin
         redirect_to admin_path
       else
@@ -17,5 +19,8 @@ class SessionsController < ApplicationController
     end
   end
 
-
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
 end

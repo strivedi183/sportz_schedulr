@@ -44,6 +44,20 @@ describe 'sessions' do
     page.should have_text 'Dashboard'
   end
 
+  it 'should redirect the visitor to the login page if he/she isn\'t logged in' do
+    if @auth.nil?
+      page.should have_text 'SPORTZ SCHEDULR -- Home'
+    end
+  end
+
+  it 'should destroy a session when the user logs out' do
+    fill_in :email,       :with => user.email
+    fill_in :password,    :with => user.password
+    click_button 'Log In'
+    click_link 'Logout'
+    page.should have_text 'Login'
+  end
+
 
 
 end
