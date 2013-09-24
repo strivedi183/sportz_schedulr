@@ -26,4 +26,5 @@
 #  updated_at  :datetime
 #
 class Event < ActiveRecord::Base
+  belongs_to :meeting
 end

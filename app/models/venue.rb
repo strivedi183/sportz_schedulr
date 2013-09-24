@@ -24,4 +24,5 @@
 #  updated_at  :datetime
 #
 class Venue < ActiveRecord::Base
+  has_many :meetups
 end

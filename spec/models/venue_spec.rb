@@ -14,7 +14,10 @@
 require 'spec_helper'
 
 describe Venue do
-  let(:venue) {FactoryGirl.create(:venue)}
+  let(:venue)   {FactoryGirl.create(:venue)}
+  let(:meetup1) {FactoryGirl.create(:meetup)}
+  let(:meetup2) {FactoryGirl.create(:meetup)}
+
   describe '.new' do
     it 'should create a Venue instance' do
       expect(venue).to be_an_instance_of Venue
@@ -46,6 +49,15 @@ describe Venue do
       it 'should have a longitude coordinate' do
         expect(venue.lng).to be_an_instance_of Float
         expect(venue.lng).to eq -74.074444
+      end
+    end
+    describe '#meetups' do
+      it 'should have many meetups' do
+        venue.meetups << meetup1
+        venue.meetups << meetup2
+        expect(venue.meetups.first).to be_an_instance_of Meetup
+        expect(venue.meetups[1]).to be_an_instance_of Meetup
+        expect(venue.meetups.count).to eq 2
       end
     end
   end
