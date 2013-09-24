@@ -13,6 +13,11 @@
 #  updated_at :datetime
 #
 
-class Meetup < ActiveRecord::Base
-  has_and_belongs_to_many :users
+
+FactoryGirl.define do
+  factory :meetup, :class => Meetup do
+    title         'NYG vs. Den'
+    start_date    DateTime.new 2013,9,30
+    end_date      DateTime.new 2013,9,30
+  end
 end
