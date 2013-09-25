@@ -56,9 +56,10 @@ describe Venue do
         venue.meetups << meetup1
         venue.meetups << meetup2
         expect(venue.meetups.first).to be_an_instance_of Meetup
-        expect(venue.meetups[1]).to be_an_instance_of Meetup
+        expect(venue.meetups.last).to be_an_instance_of Meetup
         expect(venue.meetups.count).to eq 2
       end
     end
   end
 end
+
