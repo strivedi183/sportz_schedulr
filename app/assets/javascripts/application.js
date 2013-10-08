@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require 'bootstrap.js'
+//= require 'jquery.mobile-1.3.2.js'
