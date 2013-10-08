@@ -30,6 +30,16 @@ gem 'jbuilder', '~> 1.2'
 # For username password login capabilities
 gem 'devise'
 
+# For web scraping
+gem 'open-uri-cached'
+gem 'nokogiri'
+gem 'httparty'
+
+# geolocation
+gem 'geocoder'
+
+
+# templating
 gem 'haml'
 
 group :doc do
