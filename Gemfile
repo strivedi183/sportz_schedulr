@@ -38,6 +38,10 @@ gem 'httparty'
 # geolocation
 gem 'geocoder'
 
+# Omniauth login for Facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 # templating
 gem 'haml'

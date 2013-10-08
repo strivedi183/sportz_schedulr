@@ -31,4 +31,9 @@ SportzSchedulr::Application.configure do
   config.assets.debug = true
 
 
+  # Omniauth keys for Facebook
+  FACEBOOK_SPORTZ_ID  = ENV['FACEBOOK_SPORTZ_ID']
+  FACEBOOK_SPORTZ_SEC = ENV['FACEBOOK_SPORTZ_SEC']
+
+
 end

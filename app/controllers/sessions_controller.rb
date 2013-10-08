@@ -3,6 +3,20 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  # authorizes with Facebook and oauth instead
+  def create_with_facebook
+    auth_hash = request.env['omniauth.auth']
+    @authorization = Authorization.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
+    if @authorization
+      render :text => "Welcome back #{@authorization.user.name}!"
+    else
+      user = User.new :first_name => auth_hash['info']['name'], :email => auth_hash['info']['email']
+      user.authorizations.build :provider => auth_hash['provider'], :uid => auth_hash['uid']
+      user.save
+      render :text => "Hi #{user.first_name}! You've signed up."
+    end
+  end
+
   def create
     user = User.where(:email => params[:email]).first
     if user && user.authenticate(params[:password])
