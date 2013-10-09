@@ -17,3 +17,8 @@
 //= require backbone
 //= require 'bootstrap.js'
 //= require 'jquery.mobile-1.3.2.js'
+//= require 'main'
+
+//= require_tree './models/'
+//= require_tree './collections/'
+//= require_tree './views/'

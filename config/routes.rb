@@ -16,6 +16,11 @@ SportzSchedulr::Application.routes.draw do
     resources :users, :meetups, :venues, :events
   end
 
+  # api/
+  namespace :api do
+    resources :users, :only => [:index, :show]
+  end
+
   # routes for omniauth facebook authentication
   match 'auth/:provider/callback',  :to => 'sessions#create_with_facebook', :as => 'login_with_facebook', :via  => :all
   match 'auth/failure',             :to => 'sessions#new', :as   =>  '/',   :via => [:get, :post]

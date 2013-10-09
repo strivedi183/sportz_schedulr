@@ -43,6 +43,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 
+
 # templating
 gem 'haml'
 
@@ -80,4 +81,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'annotate'
   gem 'jasmine-rails'
+  gem 'jasmine-headless-webkit'
 end
