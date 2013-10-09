@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require underscore
+//= require backbone
 //= require 'bootstrap.js'
 //= require 'jquery.mobile-1.3.2.js'

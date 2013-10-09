@@ -10,6 +10,8 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  is_admin        :boolean          default(FALSE)
+#  lat             :float
+#  lng             :float
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

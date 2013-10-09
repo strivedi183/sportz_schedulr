@@ -20,5 +20,7 @@ SportzSchedulr::Application.routes.draw do
   match 'auth/:provider/callback',  :to => 'sessions#create_with_facebook', :as => 'login_with_facebook', :via  => :all
   match 'auth/failure',             :to => 'sessions#new', :as   =>  '/',   :via => [:get, :post]
 
+  # for Jasmine testing
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 
 end

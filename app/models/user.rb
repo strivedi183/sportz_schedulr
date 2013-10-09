@@ -10,6 +10,8 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  is_admin        :boolean          default(FALSE)
+#  lat             :float
+#  lng             :float
 #
 
 class User < ActiveRecord::Base
@@ -18,12 +20,12 @@ class User < ActiveRecord::Base
   has_secure_password
   validates_presence_of :last_name,   :length =>  {:minimum => 3}
   validates_presence_of :first_name,  :length =>  {:minimum => 2}
-  validates :email, :uniqueness => true
+  validates             :email, :uniqueness => true
+
 
   def add_provider(auth_hash)
     unless authorizations.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
       Authorization.create :user => self, :provider => auth_hash['provider'], :uid => auth_hash['uid']
     end
   end
-
 end

@@ -10,6 +10,8 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  is_admin        :boolean          default(FALSE)
+#  lat             :float
+#  lng             :float
 #
 
 require 'spec_helper'
@@ -67,5 +69,4 @@ describe User do
       expect(nil_user).to_not be_valid
     end
   end
-
 end

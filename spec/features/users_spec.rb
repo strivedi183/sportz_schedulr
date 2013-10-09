@@ -10,7 +10,7 @@ describe 'Users' do
   end
   describe 'GET /users/new' do
     it 'displays the new user -- registration -- page' do
-      within 'h1' do
+      within 'h2' do
         page.should have_text 'Register'
       end
     end
@@ -20,7 +20,7 @@ describe 'Users' do
         new_user = User.new(:first_name=>'Tom', :last_name=>'tom', :email=>'tom@email.com', :password=>'tom', :password_confirmation=>'Tom')
         register new_user
       end
-      page.should have_text 'SPORTZ SCHEDULR -- Home'
+      page.should have_text 'Sportz Schedulr'
     end
 
     it 'prevents duplicate entries by email' do
@@ -30,6 +30,5 @@ describe 'Users' do
       end
       expect(page).to have_text 'Error: Could Not Save In Database'
     end
-
   end
 end
