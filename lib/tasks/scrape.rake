@@ -17,10 +17,11 @@ namespace :scrape do
         retry
       end
       unless result.nil?
-        lat = result.data['geometry']['location']['lat']
-        lng = result.data['geometry']['location']['lng']
+        lat     = result.data['geometry']['location']['lat']
+        lng     = result.data['geometry']['location']['lng']
+        address = result.data['formatted_address']
       end
-      Venue.find_or_create_by_name :name => e[:venue], :lat => lat, :lng => lng
+      Venue.find_or_create_by_name :name => e[:venue], :lat => lat, :lng => lng, :address => address
       Event.find_or_create_by_name :name => e[:name], :date => e[:datetime]
     end
   end

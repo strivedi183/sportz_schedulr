@@ -9,6 +9,7 @@
 #  lng         :float
 #  created_at  :datetime
 #  updated_at  :datetime
+#  address     :string(255)
 #
 
 require 'spec_helper'

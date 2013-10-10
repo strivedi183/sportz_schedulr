@@ -18,7 +18,8 @@ SportzSchedulr::Application.routes.draw do
 
   # api/
   namespace :api do
-    resources :users, :only => [:index, :show]
+    resources :users,   :only => [:index, :show]
+    resources :venues,  :only => [:show]
   end
 
   # routes for omniauth facebook authentication

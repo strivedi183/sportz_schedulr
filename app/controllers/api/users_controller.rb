@@ -22,6 +22,6 @@ class Api::UsersController < ApplicationController
         :email      => user.email,
         :id         => user.id
       }.to_json
-    respond_with user_hash
+    ]respond_with user_hash
   end
 end
