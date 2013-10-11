@@ -2,3 +2,6 @@
 .description= @event.description
 .date=        format_to_short_date_time @event.date
 .venue=       @event.venue_name
+.address=     @event.venue_address
+.map
+  = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"

@@ -17,4 +17,7 @@ class Event < ActiveRecord::Base
   def venue_name
     self.venue.name if self.venue.present?
   end
+  def venue_address
+    self.venue.address if self.venue.present?
+  end
 end

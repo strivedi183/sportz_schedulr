@@ -4,10 +4,16 @@ include SessionsHelperSpec
 
 describe 'Events' do
   let(:user)      {FactoryGirl.create :user}
-  let!(:event1)    {FactoryGirl.create :event1}
-  let!(:event2)    {FactoryGirl.create :event2}
+  let!(:event1)   {FactoryGirl.create :event1}
+  let!(:event2)   {FactoryGirl.create :event2}
+  let!(:venue)    {FactoryGirl.create :venue}
 
   before :each do
+    event1.venue = venue
+    event2.venue = venue
+    event1.save
+    event2.save
+
     visit root_path
     click_link 'Log In'
     login user
@@ -45,6 +51,11 @@ describe 'Events' do
     end
     it 'should display the date in the following format: Jan 1' do
       page.should have_text 'Sunday, Sep 15'
+    end
+    it "should display the event's address" do
+      page.should have_text 'MetLife Stadium 102 New Jersey 120, East Rutherford, NJ 07073, USA'
+    end
+    it 'should display a map of the venue' do
     end
   end
 
