@@ -21,8 +21,9 @@ namespace :scrape do
         lng     = result.data['geometry']['location']['lng']
         address = result.data['formatted_address']
       end
-      Venue.find_or_create_by_name :name => e[:venue], :lat => lat, :lng => lng, :address => address
-      Event.find_or_create_by_name :name => e[:name], :date => e[:datetime]
+      venue = Venue.find_or_create_by_name :name => e[:venue], :lat => lat, :lng => lng, :address => address
+      event = Event.find_or_create_by_name :name => e[:name], :date => e[:datetime]
+      venue.events << event
     end
   end
 end

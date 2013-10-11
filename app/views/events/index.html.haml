@@ -1,0 +1,4 @@
+%h1 Events
+.events
+  - @events.each do |event|
+    = render :partial => 'event', :locals => {:event => event}

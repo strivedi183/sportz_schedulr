@@ -64,9 +64,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# gem 'factory_girl_rails', :group => :test
+
 group :development, :test do
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'pry-rails'

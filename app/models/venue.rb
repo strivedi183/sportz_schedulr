@@ -11,5 +11,11 @@
 #  updated_at  :datetime
 #  address     :string(255)
 #
+
 class Venue < ActiveRecord::Base
+  has_many            :events
+  geocoded_by         :address
+  reverse_geocoded_by :lat, :lng, :if => lambda {|obj| obj.lat.nil? || obj.lng.nil? }
+  after_validation    :geocode,   :if => lambda { |obj| obj.address_changed? }
+  after_validation    :reverse_geocode
 end

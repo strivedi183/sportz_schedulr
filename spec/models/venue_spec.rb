@@ -39,7 +39,12 @@ describe Venue do
         expect(venue.description).to eq 'The place where the Giants and Jets play.'
       end
     end
-    describe '#lat' do
+    describe 'address' do
+      it 'should have an address' do
+        expect(venue.address).to be_an_instance_of String
+      end
+    end
+    describe 'coords' do
       it 'should have a latitude coordinate' do
         expect(venue.lat).to be_an_instance_of Float
         expect(venue.lat).to eq 40.813611

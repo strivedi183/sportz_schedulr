@@ -1,4 +1,4 @@
-# == Schema Information
+  # == Schema Information
 #
 # Table name: users
 #
@@ -36,10 +36,10 @@ FactoryGirl.define do
   end
 
   factory :nil_user, :class => User do
-    first_name            ''
-    last_name             ''
-    email                 ''
-    password              ''
-    is_admin              ''
+    first_name            nil
+    last_name             nil
+    email                 nil
+    password              nil
+    is_admin              nil
   end
 end

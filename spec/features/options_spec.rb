@@ -20,7 +20,7 @@ describe 'Options' do
     it 'should list available options' do
       within 'nav.options' do
         page.should have_text 'My Meetups'
-        page.should have_text 'Create a Meetup'
+        page.should have_text 'Find Events'
         page.should have_text 'My Friends'
       end
     end

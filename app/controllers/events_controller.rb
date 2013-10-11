@@ -4,6 +4,6 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = @auth.events.all
+    @events = Event.all
   end
 end
