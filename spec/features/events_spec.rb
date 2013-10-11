@@ -18,15 +18,12 @@ describe 'Events' do
     it 'should go to the sporting events page' do
       page.should have_text 'Events'
     end
-    it 'should display the name Event' do
-      page.should have_text 'Event'
-    end
     it 'should list the sporting events available' do
       within :css, '.events' do
         page.should have_css '.event'
       end
-
     end
+
   end
 
 end
