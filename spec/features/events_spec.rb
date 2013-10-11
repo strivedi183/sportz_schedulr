@@ -26,16 +26,25 @@ describe 'Events' do
         page.should have_css '.venue'
       end
     end
+    it 'should display the date in the following format: Jan 1, 2014' do
+      first('.date').should have_text 'Sun Sep 15, 2013'
+    end
   end
 
   describe 'GET /events/:id' do
-    it "should go to the sporting event's show page" do
+    before :each do
       within :css, '.events' do
         first(:link).click
       end
+    end
+    it "should go to the sporting event's show page" do
       page.should have_text event1.name
       page.should have_text event1.description
+      page.should have_text event1.venue_name
       page.should_not have_text event2.name
+    end
+    it 'should display the date in the following format: Jan 1' do
+      page.should have_text 'Sunday, Sep 15'
     end
   end
 

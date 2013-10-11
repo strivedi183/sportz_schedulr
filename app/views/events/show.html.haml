@@ -1,3 +1,4 @@
-%h2= @event.name
+%h2=          @event.name
 .description= @event.description
-.date= @event.date
+.date=        format_to_short_date_time @event.date
+.venue=       @event.venue_name
