@@ -5,23 +5,34 @@ class SessionsController < ApplicationController
 
   # authorizes with Facebook and oauth instead
   def create_with_facebook
-    auth_hash = request.env['omniauth.auth']
-    @authorization = Authorization.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
-    if @authorization
-      render :text => "Welcome back #{@authorization.user.name}!"
+    auth_hash     = request.env['omniauth.auth']
+    authorization = Authorization.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
+    name          = auth_hash['info']['name'].split
+    email         = auth_hash['info']['email']
+    first, last   = name[0], name[1..-1].join(' ')
+    user          = User.find_by_first_name_and_last_name_and_email(first, last, email)
+
+    if authorization && user
+      sessionize authorization.user
+
+    elsif user
+      user.authorizations.build :provider => auth_hash['provider'], :uid => auth_hash['uid']
+      sessionize user
+
     else
-      user = User.new :first_name => auth_hash['info']['name'], :email => auth_hash['info']['email']
+      user = User.new(:first_name => first, :last_name => last, :email => email)
       user.authorizations.build :provider => auth_hash['provider'], :uid => auth_hash['uid']
       user.save
-      render :text => "Hi #{user.first_name}! You've signed up."
+      sessionize user
     end
+
+    redirect_to root_path
   end
 
   def create
     user = User.where(:email => params[:email]).first
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      @auth = User.find(session[:user_id])
+      sessionize user
       if user.is_admin
         redirect_to admin_path
       else
@@ -37,4 +48,12 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
+  def sessionize(user)
+    @auth = user
+    session[:user_id] = user.id
+  end
+
+
 end
