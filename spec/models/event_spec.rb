@@ -14,7 +14,7 @@
 require 'spec_helper'
 
 describe Event do
-  let(:event) {FactoryGirl.create(:event)}
+  let(:event) {FactoryGirl.create(:event1)}
   describe '.new' do
     it 'creates an Event instance' do
       expect(event).to be_an_instance_of Event

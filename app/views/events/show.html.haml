@@ -5,3 +5,7 @@
 .address=     @event.venue_address
 .map
   = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
+
+.spots
+  - @spots.each do |spot|
+    .spot= spot.name

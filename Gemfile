@@ -42,6 +42,12 @@ gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Facebook SDK wrapper
+gem 'koala'
+
+# Wrapper for Google Places API
+gem 'google_places'
+
 
 
 # templating

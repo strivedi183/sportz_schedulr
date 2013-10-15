@@ -56,7 +56,13 @@ describe 'Events' do
       page.should have_text 'MetLife Stadium 102 New Jersey 120, East Rutherford, NJ 07073, USA'
     end
     it 'should display a map of the venue' do
+      page.should have_css '.map'
     end
+
+    it 'should display spots around the sporting event' do
+      page.should have_css '.spots'
+    end
+
   end
 
 end
