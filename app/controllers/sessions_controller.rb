@@ -12,13 +12,16 @@ class SessionsController < ApplicationController
     first, last   = name[0], name[1..-1].join(' ')
     user          = User.find_by_first_name_and_last_name_and_email(first, last, email)
 
+    # when both a user and an authorization have been found
     if authorization && user
       sessionize authorization.user
 
+    # if only a user exists, build an authorization
     elsif user
       user.authorizations.build :provider => auth_hash['provider'], :uid => auth_hash['uid']
       sessionize user
 
+    # No user or authorization; build them
     else
       user = User.new(:first_name => first, :last_name => last, :email => email)
       user.authorizations.build :provider => auth_hash['provider'], :uid => auth_hash['uid']
