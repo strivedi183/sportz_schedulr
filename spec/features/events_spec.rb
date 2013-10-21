@@ -63,6 +63,9 @@ describe 'Events' do
       page.should have_css '.spots'
     end
 
+    it 'should display the user\'s friends available for possible invite' do
+    end
+
   end
 
 end

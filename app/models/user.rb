@@ -29,10 +29,21 @@ class User < ActiveRecord::Base
     end
   end
 
+
   # for interacting with the Facebook API
   def facebook
     @facebook ||= Koala::Facebook::API.new oauth_token
   end
+
+  def friends
+    self.facebook.get_connection('me', 'friends')
+  end
+
+  def friends_count
+    self.facebook.get_connection('me', 'friends').size
+  end
+
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

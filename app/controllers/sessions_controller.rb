@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
 
     # when both a user and an authorization have been found
     if authorization && user
+      user.oauth_token = auth_hash['credentials']['token']
+      user.save
       sessionize authorization.user
 
     # if only a user exists, build an authorization
@@ -28,6 +30,7 @@ class SessionsController < ApplicationController
       user.save
       sessionize user
     end
+    binding.pry
 
     redirect_to root_path
   end

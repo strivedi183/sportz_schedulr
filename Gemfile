@@ -91,4 +91,5 @@ group :development, :test do
   gem 'annotate'
   gem 'jasmine-rails'
   gem 'jasmine-headless-webkit'
+  # gem 'webmock'                  # Library for stubbing and setting expectations on HTTP requests in Ruby.
 end

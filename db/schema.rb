@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010215826) do
+ActiveRecord::Schema.define(version: 20131020020826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20131010215826) do
     t.boolean  "is_admin",        default: false
     t.float    "lat"
     t.float    "lng"
+    t.string   "oauth_token"
   end
 
   create_table "venues", force: true do |t|
