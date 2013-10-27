@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
       user.save
       sessionize user
     end
-    binding.pry
 
     redirect_to root_path
   end
