@@ -1,20 +1,23 @@
-%h2=          @event.name
-.description= @event.description
-.date=        format_to_short_date_time @event.date
-.venue=       @event.venue_name
-.address=     @event.venue_address
-.map
-  = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
+= form_tag meetups_path, :method => 'post' do
+  %h2=          @event.name
+  .description= @event.description
+  .date=        format_to_short_date_time @event.date
+  .venue=       @event.venue_name
+  .address=     @event.venue_address
+  .map
+    = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
 
-%h1 Choose a Nearby Location
-%ul.spots{:'data-role'=>'listview'}
-  - @spots.each do |spot|
-    %li.spot= spot.name
+  %h1 Choose a Nearby Location
+  %ul.spots
+    - @venues.each do |venue|
+      %li.spot
+        = label_tag         :venue, venue.name
+        = radio_button_tag  :venue, :name => venue.name, :lat => venue.lat, :lng => venue.lng
 
-%h1 Friends
-%ul.friends{:'data-role'=>'listview'}
-  - @auth.friends.each do |friend|
-    %li.friend= friend['name']
+  %h1 Friends
+  %ul.friends
+    - @auth.friends.each do |friend|
+      %li.friend= friend['name']
 
-=link_to 'Cancel',        '', :method => 'post', :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'
-=link_to 'Create Meetup', '', :method => 'post', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'
+  =link_to    'Cancel',        :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'
+  =submit_tag 'Create Meetup', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'
