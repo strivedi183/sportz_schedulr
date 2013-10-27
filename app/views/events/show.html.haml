@@ -7,11 +7,13 @@
   = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
 
 %h1 Choose a Nearby Location
-%ul.spots
+%ul.spots{:'data-role'=>'listview'}
   - @spots.each do |spot|
-    %li.spot{:'data-role'=>'listview'}= spot.name
+    %li.spot= spot.name
 
 %h1 Friends
-= render :partial => 'shared/friend_list', :locals => {:friends => @auth.friends}
+%ul.friends{:'data-role'=>'listview'}
+- @auth.friends.each do |friend|
+  %li.friend= friend['name']
 
 =link_to 'Create Meetup', '', :method => 'post', :'data-role' => 'button'
