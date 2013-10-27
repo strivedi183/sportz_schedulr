@@ -13,7 +13,8 @@
 
 %h1 Friends
 %ul.friends{:'data-role'=>'listview'}
-- @auth.friends.each do |friend|
-  %li.friend= friend['name']
+  - @auth.friends.each do |friend|
+    %li.friend= friend['name']
 
-=link_to 'Create Meetup', '', :method => 'post', :'data-role' => 'button'
+=link_to 'Cancel',        '', :method => 'post', :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'
+=link_to 'Create Meetup', '', :method => 'post', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'
