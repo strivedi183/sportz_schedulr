@@ -5,17 +5,16 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :string(255)
-#  lat         :float
-#  lng         :float
 #  date        :datetime
 #  created_at  :datetime
 #  updated_at  :datetime
+#  venue_id    :integer
 #
 
 require 'spec_helper'
 
 describe Event do
-  let(:event) {FactoryGirl.create(:event)}
+  let(:event) {FactoryGirl.create(:event1)}
   describe '.new' do
     it 'creates an Event instance' do
       expect(event).to be_an_instance_of Event
@@ -36,18 +35,6 @@ describe Event do
     it 'has a description' do
       expect(event.description).to be_an_instance_of String
       expect(event.description).to eq 'Week 2 of the NFL is here! The Giants play the Broncos in the third Manning Bowl!'
-    end
-  end
-  describe '#lat' do
-    it 'has a latitude coordinate' do
-      expect(event.lat).to be_an_instance_of Float
-      expect(event.lat).to eq 40.813611
-    end
-  end
-  describe '#lng' do
-    it 'has a longitude coordinate' do
-      expect(event.lng).to be_an_instance_of Float
-      expect(event.lng).to eq -74.074444
     end
   end
   describe '#date' do

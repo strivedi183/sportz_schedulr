@@ -10,7 +10,7 @@ describe 'Sessions' do
   end
 
   it 'should go to the login page' do
-    within 'h1' do
+    within 'h2' do
       page.should have_text 'Log In'
     end
   end
@@ -34,7 +34,7 @@ describe 'Sessions' do
     fill_in :email,     :with => user.email
     fill_in :password,  :with => user.password
     click_button 'Log In'
-    page.should have_text 'Home'
+    page.should have_text "Welcome, #{user.first_name}"
   end
 
   it 'should redirect the admin to the dashboard page after a SUCCESSFUL login attempt' do
@@ -46,7 +46,7 @@ describe 'Sessions' do
 
   it 'should redirect the visitor to the login page if he/she isn\'t logged in' do
     visit root_path
-    page.should have_text 'SPORTZ SCHEDULR -- Home'
+    page.should have_text 'Sportz Schedulr'
   end
 
   it 'should destroy a session when the user logs out' do
@@ -56,7 +56,5 @@ describe 'Sessions' do
     click_link 'Logout'
     page.should have_text 'Log In'
   end
-
-
 
 end

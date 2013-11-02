@@ -1,4 +1,4 @@
-# == Schema Information
+  # == Schema Information
 #
 # Table name: users
 #
@@ -10,6 +10,8 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  is_admin        :boolean          default(FALSE)
+#  lat             :float
+#  lng             :float
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -34,10 +36,10 @@ FactoryGirl.define do
   end
 
   factory :nil_user, :class => User do
-    first_name            ''
-    last_name             ''
-    email                 ''
-    password              ''
-    is_admin              ''
+    first_name            nil
+    last_name             nil
+    email                 nil
+    password              nil
+    is_admin              nil
   end
 end

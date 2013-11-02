@@ -33,4 +33,10 @@ SportzSchedulr::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+
+  # Omniauth keys for Facebook
+  FACEBOOK_SPORTZ_ID  = ENV['FACEBOOK_SPORTZ_ID']
+  FACEBOOK_SPORTZ_SEC = ENV['FACEBOOK_SPORTZ_SEC']
+
 end

@@ -4,11 +4,17 @@
   <title>SportzSchedulr</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render :partial => 'shared/nav' %>
-<%= yield %>
-
+  <div data-role='page'>
+    <div data-role='header' data-add-back-btn='true'>
+      <h1><%= yield :heading %></h1>
+    </div>
+    <div data-role='content'>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

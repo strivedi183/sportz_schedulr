@@ -1,0 +1,4 @@
+/ the first attribute in link_to is actually the entire text of the _event_listing partial
+%li.event
+  = link_to(render(:partial => 'event_listing', :locals => {:event => event}), new_meetup_path(:user_id => @auth.id, :event_id => event.id) )
+

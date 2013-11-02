@@ -2,7 +2,8 @@
 <nav class='options'>
   <ul>
     <li><%= link_to 'My Meetups', nil %></li>
-    <li><%= link_to 'Create a Meetup', nil %></li>
+    <li><%= link_to 'Create a Meetup', new_user_meetup_path(@auth.id) %></li>
+    <li><%= link_to 'Find Events', events_path %></li>
     <li><%= link_to 'My Friends', nil %></li>
   </ul>
 </nav>

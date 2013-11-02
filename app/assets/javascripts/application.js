@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'jquery.mobile-1.3.2.js'
 //= require turbolinks
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require 'bootstrap.js'
+//= require 'sinon.js'
+//= require 'main'
+
+
+//= require_tree './models/'
+//= require_tree './collections/'
+//= require_tree './views/'

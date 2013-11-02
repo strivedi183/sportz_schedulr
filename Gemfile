@@ -30,6 +30,27 @@ gem 'jbuilder', '~> 1.2'
 # For username password login capabilities
 gem 'devise'
 
+# For web scraping
+gem 'open-uri-cached'
+gem 'nokogiri'
+gem 'httparty'
+
+# geolocation
+gem 'geocoder'
+
+# Omniauth login for Facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+# Facebook SDK wrapper
+gem 'koala'
+
+# Wrapper for Google Places API
+gem 'google_places'
+
+
+
+# templating
 gem 'haml'
 
 group :doc do
@@ -40,6 +61,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# thin as the app server
+# gem 'thin'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -49,9 +73,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# gem 'factory_girl_rails', :group => :test
+
 group :development, :test do
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'pry-rails'
@@ -65,4 +92,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'annotate'
+  gem 'jasmine-rails'
+  gem 'jasmine-headless-webkit'
+  # gem 'webmock'                  # Library for stubbing and setting expectations on HTTP requests in Ruby.
 end

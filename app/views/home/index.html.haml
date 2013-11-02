@@ -1,2 +1,3 @@
-%h1 SPORTZ SCHEDULR -- Home
+- content_for :heading, @auth.present? ? "Hello #{@auth.first_name}": "Sportz Schedulr"
+= render :partial => 'shared/nav'
 = render :partial => 'shared/options' if @auth.present?

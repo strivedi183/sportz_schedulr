@@ -1,0 +1,4 @@
+%h1 Events
+%ul.events{:'data-role' => 'listview', ':data-inset' => 'true'}
+  - @events.each do |event|
+    = render(:partial => 'event', :locals => {:event => event})
