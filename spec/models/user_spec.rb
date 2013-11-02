@@ -12,6 +12,7 @@
 #  is_admin        :boolean          default(FALSE)
 #  lat             :float
 #  lng             :float
+#  oauth_token     :string(255)
 #
 
 require 'spec_helper'
@@ -113,8 +114,6 @@ describe User do
     #   # user = @test_users.create true
     #   # user_graph_api = Koala::Facebook::API.new user['access_token']
     #   # expect(user).to_not be nil
-    # end
+    end
   end
-
-
 end

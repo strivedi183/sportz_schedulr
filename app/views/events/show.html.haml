@@ -16,7 +16,7 @@
 
   %h1 Friends
   %ul.friends
-    - @auth.friends.each do |friend|
+    - @auth.get_friends.each do |friend|
       %li.friend= friend['name']
 
   =link_to    'Cancel',        :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'

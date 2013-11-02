@@ -11,7 +11,10 @@
 #  updated_at  :datetime
 #
 
-class Friend < ActiveRecord::Base
-  belongs_to :user
-  validates_presence_of :facebook_id
+FactoryGirl.define do
+  factory :friend, :class => Friend do
+    name        'Friend Frienderson'
+    email       'friend@testfriends.com'
+    facebook_id '1234567890'
+  end
 end

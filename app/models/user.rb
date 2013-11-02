@@ -12,10 +12,12 @@
 #  is_admin        :boolean          default(FALSE)
 #  lat             :float
 #  lng             :float
+#  oauth_token     :string(255)
 #
 
 class User < ActiveRecord::Base
-  has_many :authorizations, :friends
+  has_many :authorizations
+  has_many :friends
   has_and_belongs_to_many :meetups
   has_secure_password   :validations => false, :if => :authorizations
   validates_presence_of :last_name,   :length =>  {:minimum => 3}
@@ -35,7 +37,7 @@ class User < ActiveRecord::Base
     @facebook ||= Koala::Facebook::API.new oauth_token
   end
 
-  def friends
+  def get_friends
     self.facebook.get_connection('me', 'friends')
   end
 
