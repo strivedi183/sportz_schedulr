@@ -15,7 +15,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :authorizations
+  has_many :authorizations, :friends
   has_and_belongs_to_many :meetups
   has_secure_password   :validations => false, :if => :authorizations
   validates_presence_of :last_name,   :length =>  {:minimum => 3}
