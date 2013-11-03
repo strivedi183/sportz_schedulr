@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     if authorization && user
       user.oauth_token = auth_hash['credentials']['token']
       user.save
+      authorization.update_attribute 'user', user
       sessionize authorization.user
 
     # if only a user exists, build an authorization

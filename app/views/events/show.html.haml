@@ -1,4 +1,4 @@
-= form_tag meetups_path, :method => 'post' do
+= form_for @meetup, :method => 'post' do |f|
   %h2=          @event.name
   .description= @event.description
   .date=        format_to_short_date_time @event.date
@@ -11,15 +11,15 @@
   %ul.spots
     - @venues.each do |venue|
       %li.spot
-        = label_tag         :venue, venue.name
-        = radio_button_tag  :venue, venue.id
+        = f.label         :venue, venue.name
+        = f.radio_button  :venue, venue.id
 
   %h1 Friends
   %ul.friends
     - @friends.each do |friend|
       %li
         = check_box_tag 'friend_ids[]', friend['id']
-        = label_tag friend['name']
+        = friend['name']
 
   =link_to    'Cancel',        :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'
-  =submit_tag 'Create Meetup', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'
+  =f.submit 'Create Meetup', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'

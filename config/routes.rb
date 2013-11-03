@@ -2,7 +2,7 @@ SportzSchedulr::Application.routes.draw do
   root 'home#index'
 
   resources :events,  :only => [:index, :show]
-  resources :meetups, :only => [:new, :create]
+  resources :meetups, :only => [:index, :new, :create]
 
   resources :users do
     resources :meetups
