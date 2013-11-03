@@ -12,12 +12,14 @@
     - @venues.each do |venue|
       %li.spot
         = label_tag         :venue, venue.name
-        = radio_button_tag  :venue, :name => venue.name, :lat => venue.lat, :lng => venue.lng
+        = radio_button_tag  :venue, venue.id
 
   %h1 Friends
   %ul.friends
-    - @auth.get_friends.each do |friend|
-      %li.friend= friend['name']
+    - @friends.each do |friend|
+      %li
+        = check_box_tag 'friend_ids[]', friend['id']
+        = label_tag friend['name']
 
   =link_to    'Cancel',        :'data-role' => 'button', :'data-icon'=>'delete', :'data-inline'=>'true'
   =submit_tag 'Create Meetup', :'data-role' => 'button', :'data-icon'=>'check', :'data-inline'=>'true'

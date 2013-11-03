@@ -21,21 +21,25 @@ describe Friend do
       expect(friend).to be_an_instance_of Friend
     end
   end
+
   describe '.create' do
     it 'should create a Friend in the database' do
       expect(friend.id).to_not be_nil
     end
   end
+
   describe '#name' do
     it 'should have a name' do
       expect(friend.name).to eq 'Friend Frienderson'
     end
   end
+
   describe '#email' do
     it 'should have an email' do
       expect(friend.email).to eq 'friend@testfriends.com'
     end
   end
+
   describe '#facebook_id' do
     it 'should have a facebook id' do
       expect(friend).to be_valid
@@ -47,10 +51,22 @@ describe Friend do
       expect(friend).to_not be_valid
     end
   end
+
   describe '#user' do
     it 'should have a user' do
       friend.update_attribute 'user', user
       expect(friend.user).to be_an_instance_of User
     end
   end
+
+  describe '#meetups' do
+    it 'should have a meetup' do
+      meetup = Meetup.create
+      friend.meetups << meetup
+      expect(friend.meetups.first).to_not be_nil
+      expect(friend.meetups.first).to be_an_instance_of Meetup
+      expect(friend.meetups.first).to be_valid
+    end
+  end
+
 end

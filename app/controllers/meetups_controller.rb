@@ -7,18 +7,25 @@ class MeetupsController < ApplicationController
     @event  = Event.find params[:event_id]
     @google_client = GooglePlaces::Client.new ENV['GOOGLE_API_KEY']
     @spots = @google_client.spots(@event.venue.lat, @event.venue.lng, :types => 'bar', :radius => 5000)
+    @venues = @spots.map { |spot| Venue.find_or_create_by_name :name => spot.name, :lat => spot.lat, :lng => spot.lng }
 
-    @venues = @spots.map { |spot| Venue.new :name => spot.name, :lat => spot.lat, :lng => spot.lng }
-
+    @friends = @auth.get_friends.map do |f|
+      Friend.find_or_create_by_facebook_id :name => f['name'], :email => f['email'], :facebook_id=>f['id']
+    end
     render 'events/show'
   end
 
   def create
-    # save the venue
-    venue = eval params[:venue]
-    venue = Venue.find_or_create_by_lat_and_lng :name => venue[:name], :lat => venue[:lat], :lng => venue[:lng]
+    # establish parameters
+    venue   = Venue.find params[:venue]
+    friends = params[:friend_ids].map {|friend_id| Friend.find friend_id }
 
-    # establish the number of friends invited
+    # build meetup
+    meetup = Meetup.new
+    friends.each {|f| meetup.friends << f}
+    meetup.venue = venue
+    # assign meetup to auth
+    @auth.meetups << meetup
 
   end
 

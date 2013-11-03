@@ -10,12 +10,22 @@ class FootballScraper < Scraper
   def scrape
     results = []
     date = ''
+    skip_row = false
     page.css('table.tablehead').each do |table|
       table.css('tr').each do |row|
-
         # If row is a header, skip it. If the week displays stats, it already happened;
         # no need to scrape then.
-        break if row.text.include? 'HI'
+        if row.text.include? 'HI'
+          skip_row = true
+          next
+        end
+
+        # skip the stats row after the header
+        if skip_row
+          skip_row = false
+          next
+        end
+
         next  if row.text.include?('Week') || row.text.include?('Bye')
 
         # save the date

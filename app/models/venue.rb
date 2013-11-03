@@ -14,6 +14,7 @@
 
 class Venue < ActiveRecord::Base
   has_many            :events
+  has_many            :meetups
   geocoded_by         :address
   reverse_geocoded_by :lat, :lng, :if => lambda {|obj| obj.lat.nil? || obj.lng.nil? }
   after_validation    :geocode,   :if => lambda { |obj| obj.address_changed? }

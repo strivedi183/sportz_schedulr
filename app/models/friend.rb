@@ -12,6 +12,7 @@
 #
 
 class Friend < ActiveRecord::Base
-  belongs_to :user
-  validates_presence_of :facebook_id
+  belongs_to              :user
+  has_and_belongs_to_many :meetups
+  validates_presence_of   :facebook_id
 end
