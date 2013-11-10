@@ -11,7 +11,6 @@
 #  updated_at  :datetime
 #  address     :string(255)
 #
-
 class Venue < ActiveRecord::Base
   has_many            :events
   has_many            :meetups

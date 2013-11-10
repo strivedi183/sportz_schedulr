@@ -15,13 +15,14 @@ class MeetupsController < ApplicationController
 
   def create
     # establish parameters
+    event   = Event.find params[:event_id]
     venue   = Venue.find params[:meetup][:venue]
     friends = params[:friend_ids].map {|friend_id| Friend.find friend_id }
+    title   = params[:meetup][:title].present? ? params[:meetup][:title] : event.name
 
     # build meetup
-    meetup = Meetup.new
+    meetup = Meetup.new :title=>title, :venue=>venue, :event=>event
     friends.each {|f| meetup.friends << f}
-    meetup.venue = venue
 
     # assign meetup to auth
     @auth.meetups << meetup

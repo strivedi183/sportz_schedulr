@@ -33,6 +33,7 @@ class FootballScraper < Scraper
           date = row.children[0].text
           next
         end
+
         data = {
           :name     => row.children[0].text ,
           :time     => row.children[2].text ,

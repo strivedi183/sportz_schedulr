@@ -1,4 +1,5 @@
 = form_for @meetup, :method => 'post' do |f|
+  = hidden_field_tag 'event_id', @event.id
   %h2=          @event.name
   .description= @event.description
   .date=        format_to_short_date_time @event.date
@@ -6,6 +7,8 @@
   .address=     @event.venue_address
   .map
     = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
+  = f.label      :title
+  = f.text_field :title, :placeholder=>'Optional: Type a Title'
 
   %h1 Choose a Nearby Location
   .spots

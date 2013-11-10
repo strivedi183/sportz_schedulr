@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'jquery-ui-1.10.3/jquery-1.9.1.js'
 //= require turbolinks
 //= require underscore
 //= require backbone
