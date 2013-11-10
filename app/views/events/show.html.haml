@@ -8,11 +8,12 @@
     = image_tag "http://maps.google.com/maps/api/staticmap?center=#{@event.venue_address}&zoom=11&size=350x350&maptype=roadmap&sensor=false&markers=#{@event.venue_address}"
 
   %h1 Choose a Nearby Location
-  %ul.spots
+  .spots
     - @venues.each do |venue|
-      %li.spot
-        = f.label         :venue, venue.name
+      .spot
         = f.radio_button  :venue, venue.id
+        = f.label         :venue, venue.name
+
 
   %h1 Friends
   %ul.friends
