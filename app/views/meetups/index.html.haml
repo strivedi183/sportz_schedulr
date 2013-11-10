@@ -1,0 +1,4 @@
+%h1 My Meetups
+- @auth.meetups.each do |meetup|
+  %h2= meetup.venue.name
+  %p= "Invities: #{meetup.friends.map(&:name).join ', '}"

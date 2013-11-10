@@ -14,4 +14,7 @@
 #
 
 class Meetup < ActiveRecord::Base
+  belongs_to                :user
+  belongs_to                :venue
+  has_and_belongs_to_many   :friends
 end
